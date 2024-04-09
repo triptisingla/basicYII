@@ -50,15 +50,31 @@ $config = [
             ],
         ],
         */
+
+        'assetManager' => [
+            'bundles' => [
+                'yii\bootstrap\BootstrapAsset' => [
+                    'sourcePath' => null,   // do not publish the bundle
+                    'css' => ['//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'],
+                ],
+                'yii\bootstrap\BootstrapPluginAsset' => [
+                    'sourcePath' => null,   // do not publish the bundle
+                    'js' => ['//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'],
+                ],
+            ],
+        ],
     ],
-    // 'modules' => [
-    //     'gridview' => [
-    //         'class' => 'kartik\grid\Module',
-    //         // enter optional module parameters here - see kartik\grid\Module::$config
-    //     ],
-    //     // Other modules...
-    // ],
-    'params' => $params,
+    'modules' => [
+        'gridview' => [
+            'class' => 'kartik\grid\Module',
+            // enter optional module parameters here - see kartik\grid\Module::$config
+        ],
+        // Other modules...
+    ],
+    'params' => [
+        'bsVersion' => '4.x',
+        $params
+    ],
 ];
 
 if (YII_ENV_DEV) {

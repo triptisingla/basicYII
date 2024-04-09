@@ -4,8 +4,8 @@ use app\models\Users;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
-use yii\grid\GridView;
-// use kartik\grid\GridView;
+// use yii\grid\GridView;
+use kartik\grid\GridView;
 
 /** @var yii\web\View $this */
 /** @var app\models\UsersSearch $searchModel */
@@ -26,48 +26,49 @@ $this->params['breadcrumbs'][] = $this->title;
     ?>
 
     <?=
-    GridView::widget([
-       'dataProvider' => $dataProvider,
-       'filterModel' => $searchModel,
-       'columns' => [
-           ['class' => 'yii\grid\SerialColumn'],
-    
-           'email:email',
-           'username',
-           'password',
-           'id',
-           [
-               'class' => ActionColumn::className(),
-               'urlCreator' => function ($action, Users $model, $key, $index, $column) {
-                   return Url::toRoute([$action, 'id' => $model->id]);
-               }
-           ],
-       ],
-    ]); 
     // GridView::widget([
-    //     'dataProvider' => $dataProvider,
-    //     'filterModel' => $searchModel,
-    //     'columns' => [
-    //         ['class' => 'yii\grid\SerialColumn'],
+    //    'dataProvider' => $dataProvider,
+    //    'filterModel' => $searchModel,
+    //    'columns' => [
+    //        ['class' => 'yii\grid\SerialColumn'],
 
-    //         'id',
-    //         'email:email',
-    //         'username',
-    //         'password',
+    //        'email:email',
+    //        'username',
+    //        'password',
+    //        'id',
+    //        [
+    //            'class' => ActionColumn::className(),
+    //            'urlCreator' => function ($action, Users $model, $key, $index, $column) {
+    //                return Url::toRoute([$action, 'id' => $model->id]);
+    //            }
+    //        ],
+    //    ],
+    // ]); 
+    GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
 
-    //         [
-    //             'class' => 'kartik\grid\ActionColumn',
-    //             'dropdown' => false,
-    //             'vAlign' => 'middle',
-    //         ],
-    //     ],
-    //     'pjax' => true,
-    //     'bordered' => true,
-    //     'striped' => false,
-    //     'condensed' => false,
-    //     'responsive' => true,
-    //     'hover' => true,
-    // ]);
+            'id',
+            'email:email',
+            'username',
+            'password',
+
+            [
+                'class' => 'kartik\grid\ActionColumn',
+                'dropdown' => true,
+                'vAlign' => 'middle',
+            ],
+
+        ],
+        'pjax' => true,
+        'bordered' => true,
+        'striped' => false,
+        'condensed' => false,
+        'responsive' => true,
+        'hover' => true,
+    ]);
     ?>
 
 
